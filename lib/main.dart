@@ -1,3 +1,4 @@
+ // @dart=2.9
 import 'package:dudar/pages/Doctors/doctors.dart';
 import 'package:dudar/pages/Login/Login.dart';
 import 'package:dudar/pages/Onboarding/onboard.dart';
