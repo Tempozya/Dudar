@@ -2,6 +2,7 @@ import 'package:chips_choice/chips_choice.dart';
 import 'package:dudar/pages/Doctors/components/SingleChoice.dart';
 import 'package:flutter/material.dart';
 import 'package:dudar/pages/Doctors/components/global.dart' as global;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Modal extends StatefulWidget {
   const Modal({Key? key}) : super(key: key);
@@ -16,6 +17,8 @@ class _ModalState extends State<Modal> {
   int tagCough = 1;
   List<String> nose = ['нет', 'светлые выделения', 'зелёные выделения'];
   List<String> cough = ['нет', 'сухой', 'влажный', 'поверхностный', 'глубокий'];
+
+
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
@@ -79,7 +82,13 @@ class _ModalState extends State<Modal> {
                         indent: 12,
                         endIndent: 12,
                       ),
-                      buildSymptom()
+                      buildSymptom(),
+                      ElevatedButton(
+                        onPressed: () {
+                          [print(global.listTag['Боль'])];
+                        },
+                        child: Text('Tap'),
+                      )
                     ],
                   ),
                 )

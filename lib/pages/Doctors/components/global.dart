@@ -2,6 +2,7 @@ import 'event.dart';
 
 Map<DateTime, List<Event>> selectedEvents = {};
 DateTime selectedDay = DateTime.now();
+
 Map<String, int> listTag = {
   'Насморк': 1,
   'Кашель': 1,
