@@ -1,8 +1,10 @@
-import 'package:chips_choice/chips_choice.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:dudar/pages/Doctors/components/SingleChoice.dart';
 import 'package:flutter/material.dart';
 import 'package:dudar/pages/Doctors/components/global.dart' as global;
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:intl/intl.dart'; // for date format
+import 'package:intl/date_symbol_data_local.dart';
 
 class Modal extends StatefulWidget {
   const Modal({Key? key}) : super(key: key);
@@ -13,11 +15,6 @@ class Modal extends StatefulWidget {
 
 class _ModalState extends State<Modal> {
   bool isSwitched = false;
-  int tagNose = 1;
-  int tagCough = 1;
-  List<String> nose = ['нет', 'светлые выделения', 'зелёные выделения'];
-  List<String> cough = ['нет', 'сухой', 'влажный', 'поверхностный', 'глубокий'];
-
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +42,20 @@ class _ModalState extends State<Modal> {
                             TextStyle(fontFamily: 'RobotoBold', fontSize: 20),
                       ),
                       IconButton(
-                        icon: const Icon(Icons.cancel_rounded),
-                        color: Colors.grey,
-                        onPressed: () {
+                          icon: const Icon(Icons.cancel_rounded),
+                          color: Colors.grey,
+                          onPressed: () =>
+                              {} /*async {
+                          int flag = (isSwitched) ? 1 : 0;
+                          await DatabaseHelper.instance.add(Symptoms(
+                            selectedDay:
+                                DateFormat.yMd().format(global.selectedDay),
+                            ill: flag,
+                          ));
+                          setState(() {});
                           Navigator.pop(context);
-                        },
-                      ),
+                        },*/
+                          ),
                     ]),
                 Expanded(
                   child: ListView(
@@ -85,7 +90,7 @@ class _ModalState extends State<Modal> {
                       buildSymptom(),
                       ElevatedButton(
                         onPressed: () {
-                          [print(global.listTag['Боль'])];
+                          createSymptom();
                         },
                         child: Text('Tap'),
                       )
@@ -107,5 +112,17 @@ class _ModalState extends State<Modal> {
     return ListBody(children: [
       for (var item in global.listSymptom.entries) SingleChoice(list: item.key)
     ]);
+  }
+
+  @override
+  Future createSymptom() async {
+    var url =
+        Uri.parse("http://api.c9113991.beget.tech/api/symptom/saveData.php");
+    var response = await http.post(url, body: {
+      "user_id": "1",
+      "sick": ((isSwitched) ? 1 : 0).toString(),
+      "symptoms": jsonEncode(global.listTag),
+      "dates": DateFormat('yyyy-MM-dd').format(global.selectedDay),
+    });
   }
 }

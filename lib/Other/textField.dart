@@ -6,6 +6,7 @@ class AppTextField extends StatelessWidget {
   final VoidCallback helpOnTap;
   final Widget helpContent;
   final bool obscureText;
+  final TextEditingController controller;
 
   AppTextField({
     required this.icon,
@@ -13,6 +14,7 @@ class AppTextField extends StatelessWidget {
     required this.helpOnTap,
     required this.helpContent,
     required this.obscureText,
+    required this.controller,
   });
 
   @override
@@ -20,10 +22,12 @@ class AppTextField extends StatelessWidget {
     return Stack(
       children: [
         TextField(
-          obscureText: obscureText ,
+          controller: controller,
+          obscureText: obscureText,
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: TextStyle(color: Colors.black38,fontFamily: 'RobotoBold'),
+            hintStyle:
+                TextStyle(color: Colors.black38, fontFamily: 'RobotoBold'),
             prefixIcon: icon,
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.black12),

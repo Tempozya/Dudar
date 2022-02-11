@@ -1,7 +1,8 @@
- // @dart=2.9
+// @dart=2.9
 import 'package:dudar/pages/Doctors/doctors.dart';
 import 'package:dudar/pages/Login/Login.dart';
 import 'package:dudar/pages/Onboarding/onboard.dart';
+import 'package:dudar/pages/Registration/Registrarion.dart';
 import 'package:dudar/pages/SplashScreen/splashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:dudar/routes.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: theme(),
       // home: SplashScreen(),
       // We use routeName so that we dont need to remember the name
-      initialRoute: DoctorsScreen.routeName,
+      initialRoute: LoginScreen.routeName,
       routes: routes,
     );
   }

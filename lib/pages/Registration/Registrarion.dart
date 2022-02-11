@@ -1,17 +1,51 @@
+import 'dart:convert' show json;
 import 'package:flutter/material.dart';
 import 'package:dudar/Other/outlinedButton.dart';
 import 'package:dudar/Other/textField.dart';
-
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
 
 class SignUpScreen extends StatelessWidget {
   static String routeName = "/signup";
+  TextEditingController user = TextEditingController();
+  TextEditingController pass = TextEditingController();
+
+  Future registration() async {
+    var url = Uri.parse("http://api.c9113991.beget.tech/api/Auth/register.php");
+    var response = await http.post(url, body: {
+      "login": user.text,
+      "password": pass.text,
+    });
+
+    var data = json.decode(response.body);
+    if (data == "LoginBusy") {
+      Fluttertoast.showToast(
+          msg: "Данный логин занят",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16);
+    } else {
+      Fluttertoast.showToast(
+          msg: "Аккаунт успешно создан",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 12),
         child: ListView(
           children: [
             Image.asset(
@@ -23,48 +57,54 @@ class SignUpScreen extends StatelessWidget {
               style: TextStyle(
                 color: Color(0xff172b4d),
                 fontSize: 32,
-                fontFamily: 'RobotoBold'
-                ,
+                fontFamily: 'RobotoBold',
               ),
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             AppTextField(
+              controller: user,
               hint: "Логин",
-              icon: Icon(Icons.email),
+              icon: const Icon(Icons.email),
               helpOnTap: () {},
               obscureText: false,
               helpContent: Container(),
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             AppTextField(
+              controller: pass,
               hint: "Пароль",
-              icon: Icon(Icons.lock),
+              icon: const Icon(Icons.lock),
               obscureText: true,
               helpContent: Container(),
               helpOnTap: () {},
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             FlatButton(
-              color: Color(0xff0065ff),
-              padding: EdgeInsets.all(16),
-              child: Text(
+              color: const Color(0xff0065ff),
+              padding: const EdgeInsets.all(16),
+              child: const Text(
                 "Создать",
-                style: TextStyle(color: Colors.white, fontSize: 18,fontFamily: 'RobotoBold'),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontFamily: 'RobotoBold'),
               ),
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(
-                  Radius.circular(16),
+                  const Radius.circular(16),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                registration();
+              },
             ),
-            SizedBox(height: 24),
-            Text(
+            const SizedBox(height: 24),
+            const Text(
               "или зарегистрируйтесь с помощью",
               style: TextStyle(color: Colors.black38),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             Row(
               children: [
                 Expanded(
@@ -73,19 +113,16 @@ class SignUpScreen extends StatelessWidget {
                     onTap: () {},
                   ),
                 ),
-                SizedBox(width: 12),
+                const SizedBox(width: 12),
                 Expanded(
                   child: AppOutlineButton(
                     asset: "assets/images/Gosuslugi.png",
-
                     onTap: () {},
                   ),
                 ),
-
-
               ],
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             const Text.rich(
               TextSpan(
                 text: "Уже есть аккаунт? ",
