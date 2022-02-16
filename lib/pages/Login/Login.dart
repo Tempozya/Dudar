@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginScreen> {
   TextEditingController pass = TextEditingController();
 
   Future auth() async {
-    var url = Uri.parse("http://api.c9113991.beget.tech/api/Auth/auth.php");
+    var url = Uri.parse("http://api.c9113991.beget.tech/v1.0/api/Auth/auth.php");
     var response = await http.post(url, body: {
       "login": user.text,
       "password": pass.text,

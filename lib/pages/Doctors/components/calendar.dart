@@ -1,3 +1,4 @@
+import 'package:dudar/Other/httpRequest.dart';
 import 'package:dudar/pages/Doctors/components/symptomMain.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -32,8 +33,10 @@ class CalendarState extends State<Calendar> {
             onDaySelected: (DateTime selectDay, DateTime focusDay) {
               setState(() {
                 global.selectedDay = selectDay;
-
                 focusedDay = focusDay;
+                GetSymptoms().getData();
+                print('tap');
+                symptomMain();
               });
             },
             selectedDayPredicate: (DateTime date) {

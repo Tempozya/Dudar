@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+import 'package:chips_choice/chips_choice.dart';
 import 'package:dudar/pages/Doctors/components/modal.dart';
 import 'package:flutter/material.dart';
+import 'package:dudar/pages/Doctors/components/global.dart' as global;
 
 class symptomMain extends StatefulWidget {
   const symptomMain({Key? key}) : super(key: key);
@@ -27,12 +29,28 @@ class _symptomMainState extends State<symptomMain> {
           padding: const EdgeInsets.only(left: 12),
           child: Row(
             children: [
-              Text(
+              const Text(
                 'Симптомы',
                 style: TextStyle(fontFamily: 'RobotoBold', fontSize: 18),
               ),
             ],
           ),
+        ),
+        const SizedBox(height: 20),
+        ListBody(
+          children: [
+            ChipsChoice.single(
+                onChanged: (val) => {},
+                choiceItems: C2Choice.listFrom(
+                    source: global.viewSymptomDay,
+                    value: (i, v) => i,
+                    label: (i, String v) => v),
+                wrapped: true,
+                choiceStyle: C2ChoiceStyle(
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  showCheckmark: false,
+                ))
+          ],
         ),
         const SizedBox(height: 20),
         SizedBox(

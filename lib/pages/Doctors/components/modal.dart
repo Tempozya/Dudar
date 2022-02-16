@@ -116,8 +116,8 @@ class _ModalState extends State<Modal> {
 
   @override
   Future createSymptom() async {
-    var url =
-        Uri.parse("http://api.c9113991.beget.tech/api/symptom/saveData.php");
+    var url = Uri.parse(
+        "http://api.c9113991.beget.tech/v1.0/api/symptom/saveData.php");
     var response = await http.post(url, body: {
       "user_id": "1",
       "sick": ((isSwitched) ? 1 : 0).toString(),
