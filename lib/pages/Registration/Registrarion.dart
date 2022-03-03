@@ -1,4 +1,6 @@
 import 'dart:convert' show json;
+import 'package:dudar/pages/Login/Login.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:dudar/Other/outlinedButton.dart';
 import 'package:dudar/Other/textField.dart';
@@ -6,8 +8,15 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   static String routeName = "/signup";
+  @override
+  _SignUpScreenState createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  late TapGestureRecognizer authOnTap;
+
   TextEditingController user = TextEditingController();
   TextEditingController pass = TextEditingController();
 
@@ -38,6 +47,20 @@ class SignUpScreen extends StatelessWidget {
           textColor: Colors.white,
           fontSize: 16);
     }
+  }
+
+  @override
+  void initState() {
+    authOnTap = TapGestureRecognizer();
+    authOnTap.onTap = () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => LoginScreen(),
+        ),
+      );
+    };
+    super.initState();
   }
 
   @override
@@ -123,7 +146,7 @@ class SignUpScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 12),
-            const Text.rich(
+            Text.rich(
               TextSpan(
                 text: "Уже есть аккаунт? ",
                 children: [
@@ -133,7 +156,7 @@ class SignUpScreen extends StatelessWidget {
                       color: Color(0xff0065ff),
                       fontWeight: FontWeight.bold,
                     ),
-                    recognizer: null,
+                    recognizer: authOnTap,
                   ),
                 ],
               ),

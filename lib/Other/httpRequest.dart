@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 class GetSymptoms {
   @override
   void getData() async {
+    print(global.selectedDay);
     var url = Uri.parse(
         "http://api.c9113991.beget.tech/v1.0/api/symptom/searchData.php");
     var response = await post(url, body: {
