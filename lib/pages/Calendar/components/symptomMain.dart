@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'package:chips_choice/chips_choice.dart';
-import 'package:dudar/pages/Doctors/components/modal.dart';
+import 'package:dudar/pages/Calendar/components/modal.dart';
 import 'package:flutter/material.dart';
-import 'package:dudar/pages/Doctors/components/global.dart' as global;
+import 'package:dudar/pages/Calendar/components/global.dart' as global;
 
 class symptomMain extends StatefulWidget {
   const symptomMain({Key? key}) : super(key: key);

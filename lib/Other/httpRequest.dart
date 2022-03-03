@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:dudar/pages/Doctors/components/global.dart' as global;
+import 'package:dudar/pages/Calendar/components/global.dart' as global;
 import 'package:intl/intl.dart';
 
 class GetSymptoms {

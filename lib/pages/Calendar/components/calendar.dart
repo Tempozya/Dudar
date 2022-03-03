@@ -1,5 +1,5 @@
 import 'package:dudar/Other/httpRequest.dart';
-import 'package:dudar/pages/Doctors/components/symptomMain.dart';
+import 'package:dudar/pages/Calendar/components/symptomMain.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'global.dart' as global;

@@ -5,8 +5,8 @@ import 'package:dudar/enums.dart';
 
 
 
-class CalendarScreen extends StatelessWidget {
-  static String routeName = "/calendar";
+class HomeScreen extends StatelessWidget {
+  static String routeName = "/home";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +28,7 @@ class CalendarScreen extends StatelessWidget {
         ],
       ),
 
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.calendar),
+      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
     );
   }
 }

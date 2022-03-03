@@ -1,5 +1,6 @@
 // @dart=2.9
-import 'package:dudar/pages/Doctors/doctors.dart';
+import 'package:dudar/pages/Calendar/calendar.dart';
+import 'package:dudar/pages/Home/home.dart';
 import 'package:dudar/pages/Login/Login.dart';
 import 'package:dudar/pages/Onboarding/onboard.dart';
 import 'package:dudar/pages/Registration/Registrarion.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: theme(),
       // home: SplashScreen(),
       // We use routeName so that we dont need to remember the name
-      initialRoute: Onboarding.routeName,
+      initialRoute: HomeScreen.routeName,
       routes: routes,
     );
   }

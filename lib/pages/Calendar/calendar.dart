@@ -1,19 +1,22 @@
 import 'package:badges/badges.dart';
+import 'package:dudar/Other/FadeRoute.dart';
+import 'package:dudar/pages/Profile/profile.dart';
+import 'package:flutter/material.dart';
 import 'package:dudar/coustom_bottom_nav_bar.dart';
 import 'package:dudar/enums.dart';
-import "package:flutter/material.dart";
 
+import '../../constants.dart';
 import 'components/body.dart';
 
-class DoctorsScreen extends StatelessWidget {
-  static String routeName = "/doctors";
+class CalendarScreen extends StatelessWidget {
+  static String routeName = "/calendar";
 
-  const DoctorsScreen({Key? key}) : super(key: key);
+  const CalendarScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Врачи"),
+        title: const Text("Ваше состояние"),
         actions: [
           IconButton(
             onPressed: () => {},
@@ -39,7 +42,7 @@ class DoctorsScreen extends StatelessWidget {
       ),
       body: const Body(),
       bottomNavigationBar:
-          const CustomBottomNavBar(selectedMenu: MenuState.doctors),
+          const CustomBottomNavBar(selectedMenu: MenuState.calendar),
     );
   }
 }

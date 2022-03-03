@@ -1,13 +1,12 @@
 import 'package:dudar/constants.dart';
 import 'package:dudar/enums.dart';
+import 'package:dudar/pages/Calendar/calendar.dart';
 import 'package:dudar/pages/Doctors/doctors.dart';
 import 'package:dudar/pages/Home/home.dart';
 import 'package:dudar/pages/Notification/notification.dart';
 import 'package:dudar/pages/Profile/profile.dart';
 import 'package:dudar/Other/FadeRoute.dart';
 import 'package:flutter/material.dart';
-
-
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({
@@ -42,30 +41,57 @@ class CustomBottomNavBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconButton(
-                  icon: Icon(Icons.home_rounded,size: 27,),
-                  color: MenuState.calendar == selectedMenu ? kPrimaryColor : inActiveIconColor  ,
-                  onPressed: () => Navigator.pushAndRemoveUntil(context, FadeRoute(page: CalendarScreen()),(Route<dynamic> route) => false),
+                icon: Icon(
+                  Icons.home_rounded,
+                  size: 30,
+                ),
+                color: MenuState.home == selectedMenu
+                    ? kPrimaryColor
+                    : inActiveIconColor,
+                onPressed: () => Navigator.pushAndRemoveUntil(
+                    context,
+                    FadeRoute(page: HomeScreen()),
+                    (Route<dynamic> route) => false),
               ),
               IconButton(
-                icon: Icon(Icons.calendar_today_rounded,size: 27),
+                icon: Icon(Icons.calendar_today_rounded, size: 27),
+                color: MenuState.calendar == selectedMenu
+                    ? kPrimaryColor
+                    : inActiveIconColor,
+                onPressed: () => Navigator.pushAndRemoveUntil(
+                    context,
+                    FadeRoute(page: CalendarScreen()),
+                    (Route<dynamic> route) => false),
+              ),
+              IconButton(
+                icon: Icon(Icons.health_and_safety, size: 27),
                 color: MenuState.doctors == selectedMenu
                     ? kPrimaryColor
                     : inActiveIconColor,
-                onPressed: () => Navigator.pushAndRemoveUntil(context, FadeRoute(page: DoctorsScreen()),(Route<dynamic> route) => false),
+                onPressed: () => Navigator.pushAndRemoveUntil(
+                    context,
+                    FadeRoute(page: DoctorsScreen()),
+                    (Route<dynamic> route) => false),
               ),
               IconButton(
-                icon: Icon(Icons.health_and_safety,size: 27),
+                icon: Icon(Icons.notifications, size: 27),
                 color: MenuState.notifications == selectedMenu
                     ? kPrimaryColor
                     : inActiveIconColor,
-                onPressed: () => Navigator.pushAndRemoveUntil(context, FadeRoute(page: NotificationScreen()),(Route<dynamic> route) => false),
+                onPressed: () => Navigator.pushAndRemoveUntil(
+                    context,
+                    FadeRoute(page: NotificationScreen()),
+                    (Route<dynamic> route) => false),
               ),
               IconButton(
-                icon: Icon(Icons.assessment,size: 27),
-                  color: MenuState.profile == selectedMenu
-                      ? kPrimaryColor
-                      : inActiveIconColor,
-                onPressed: () => Navigator.pushAndRemoveUntil(context, FadeRoute(page: ProfileScreen()),(Route<dynamic> route) => false),
+                icon: Icon(Icons.assessment, size: 27),
+                color: MenuState.profile == selectedMenu
+                    ? kPrimaryColor
+                    : inActiveIconColor,
+                onPressed: () => Navigator.pushAndRemoveUntil(
+                    context,
+                    FadeRoute(page: ProfileScreen()),
+                    (Route<dynamic> route) => false),
               ),
             ],
           )),

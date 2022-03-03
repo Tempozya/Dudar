@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:dudar/pages/Doctors/components/SingleChoice.dart';
+import 'package:dudar/pages/Calendar/components/SingleChoice.dart';
 import 'package:flutter/material.dart';
-import 'package:dudar/pages/Doctors/components/global.dart' as global;
+import 'package:dudar/pages/Calendar/components/global.dart' as global;
 import 'package:intl/intl.dart'; // for date format
 import 'package:intl/date_symbol_data_local.dart';
 

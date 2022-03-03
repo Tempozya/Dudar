@@ -1,6 +1,6 @@
 import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/material.dart';
-import 'package:dudar/pages/Doctors/components/global.dart' as global;
+import 'package:dudar/pages/Calendar/components/global.dart' as global;
 
 class SingleChoice extends StatefulWidget {
   const SingleChoice({Key? key, required this.list}) : super(key: key);
