@@ -21,7 +21,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController pass = TextEditingController();
 
   Future registration() async {
-    var url = Uri.parse("http://api.c9113991.beget.tech/api/Auth/register.php");
+    var url =
+        Uri.parse("http://api.c9113991.beget.tech/v1.0/api/Auth/register.php");
     var response = await http.post(url, body: {
       "login": user.text,
       "password": pass.text,

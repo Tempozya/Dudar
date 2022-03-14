@@ -9,6 +9,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:dudar/Other/outlinedButton.dart';
 import 'package:dudar/Other/textField.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   static String routeName = "/login";
@@ -23,7 +24,9 @@ class _LoginPageState extends State<LoginScreen> {
   TextEditingController pass = TextEditingController();
 
   Future auth() async {
-    var url = Uri.parse("http://api.c9113991.beget.tech/v1.0/api/Auth/auth.php");
+    final prefs = await SharedPreferences.getInstance();
+    var url =
+        Uri.parse("http://api.c9113991.beget.tech/v1.0/api/Auth/auth.php");
     var response = await http.post(url, body: {
       "login": user.text,
       "password": pass.text,
@@ -39,6 +42,8 @@ class _LoginPageState extends State<LoginScreen> {
           backgroundColor: Colors.green,
           textColor: Colors.white,
           fontSize: 16);
+
+      await prefs.setString('logged', user.text);
 
       Navigator.pushAndRemoveUntil(context, FadeRoute(page: ProfileScreen()),
           (Route<dynamic> route) => false);
@@ -102,7 +107,7 @@ class _LoginPageState extends State<LoginScreen> {
               controller: pass,
               obscureText: true,
               hint: "Пароль",
-              icon: Icon(Icons.email),
+              icon: Icon(Icons.lock_rounded),
               helpContent: const Text(
                 "Забыли?",
                 style: TextStyle(

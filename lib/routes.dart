@@ -1,6 +1,7 @@
 import 'package:dudar/pages/Calendar/calendar.dart';
 import 'package:dudar/pages/Login/Login.dart';
 import 'package:dudar/pages/Onboarding/onboard.dart';
+import 'package:dudar/pages/Profile/settings/settings.dart';
 import 'package:dudar/pages/Registration/Registrarion.dart';
 import 'package:dudar/pages/SplashScreen/splashScreen.dart';
 import 'package:flutter/widgets.dart';
@@ -21,4 +22,5 @@ final Map<String, WidgetBuilder> routes = {
   SplashScreen.routeName: (context) => SplashScreen(),
   LoginScreen.routeName: (context) => LoginScreen(),
   SignUpScreen.routeName: (context) => SignUpScreen(),
+  SettingsScreen.routeName: (context) => SettingsScreen(),
 };
