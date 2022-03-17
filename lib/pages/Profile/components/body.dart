@@ -1,6 +1,7 @@
 import 'package:dudar/Other/FadeRoute.dart';
 import 'package:dudar/pages/Login/Login.dart';
 import 'package:dudar/pages/Profile/components/profile_pic.dart';
+import 'package:dudar/pages/Profile/myprofile/myprofile.dart';
 import 'package:dudar/pages/Profile/settings/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,29 +13,27 @@ class Body extends StatefulWidget {
 }
 
 class BodyState extends State<Body> {
-  String? logged;
-
+  String _logged = "";
   @override
   void initState() {
     super.initState();
-    getLogg();
+    _getLogg();
   }
 
   @override
   Widget build(BuildContext context) {
-    getLogg();
     return SingleChildScrollView(
       physics: const AlwaysScrollableScrollPhysics(),
       padding: EdgeInsets.symmetric(vertical: 20),
       child: Column(
         children: [
-          ProfilePic(),
           SizedBox(height: 20),
-          Text(logged == null ? "NO" : logged!),
+          Text(_logged),
           ProfileMenu(
             text: "Мой профиль",
             icon: Icons.account_circle_sharp,
-            press: () => {},
+            press: () =>
+                {Navigator.push(context, FadeRoute(page: MyProfileScreen()))},
           ),
           ProfileMenu(
             text: "Настройки",
@@ -75,9 +74,12 @@ class BodyState extends State<Body> {
     );
   }
 
-  void getLogg() async {
+  Future<void> _getLogg() async {
     final prefs = await SharedPreferences.getInstance();
-    logged = prefs.getString('logged');
+    final logged = prefs.getString('logged');
+    if (logged != null) {
+      setState((() => _logged = logged));
+    }
   }
 
   void logout() async {

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-enum WhyFarther { harder, smarter, selfStarter, tradingCharter }
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);

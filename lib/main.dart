@@ -1,4 +1,5 @@
 // @dart=2.9
+import 'package:dudar/Other/notification_api.dart';
 import 'package:dudar/pages/Calendar/calendar.dart';
 import 'package:dudar/pages/Home/home.dart';
 import 'package:dudar/pages/Login/Login.dart';
@@ -12,7 +13,9 @@ import 'package:dudar/theme.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
-  initializeDateFormatting().then((_) => runApp(MyApp()));
+  WidgetsFlutterBinding.ensureInitialized();
+  NotificationService().initNotification();
+  initializeDateFormatting('ru_Ru', null).then((_) => runApp(MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -25,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: theme(),
       // home: SplashScreen(),
       // We use routeName so that we dont need to remember the name
-      initialRoute: CalendarScreen.routeName,
+      initialRoute: LoginScreen.routeName,
       routes: routes,
     );
   }
