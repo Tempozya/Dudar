@@ -40,19 +40,18 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     getData();
-    NotificationService()
-        .showNotification(1, "Профиль", "Вы зашли в профиль", 10);
+    //*NotificationService().showNotification(1, "Профиль", "Вы зашли в профиль", 10);*//
     return SingleChildScrollView(
         padding: EdgeInsets.all(15),
         child: Column(children: [
           ProfilePic(),
-          SizedBox(height: 15),
-          SizedBox(height: 15),
+          SizedBox(height: 30),
           AppTextField(
             controller: fullname,
             hint: "ФИО",
             icon: Icon(Icons.person, color: Color(0xFF5166FC)),
             actionOnTap: () => {},
+            capitalize: true,
           ),
           SizedBox(height: 15),
           AppTextField(
@@ -123,7 +122,7 @@ class _BodyState extends State<Body> {
             hint: "+7 (999) 999-99-99",
             icon: Icon(Icons.phone, color: Color(0xFF5166FC)),
             actionOnTap: () => {},
-            mask: "+# (###) ###-##-##",
+            mask: "+7 (###) ###-##-##",
           ),
           SizedBox(height: 15),
           Row(mainAxisAlignment: MainAxisAlignment.start, children: [

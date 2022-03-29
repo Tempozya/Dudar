@@ -7,6 +7,7 @@ class AppTextField extends StatelessWidget {
   final String? mask;
   final TextEditingController controller;
   final VoidCallback actionOnTap;
+  final bool? capitalize;
 
   AppTextField({
     required this.hint,
@@ -14,6 +15,7 @@ class AppTextField extends StatelessWidget {
     required this.icon,
     required this.actionOnTap,
     this.mask,
+    this.capitalize,
   });
 
   @override
@@ -25,6 +27,9 @@ class AppTextField extends StatelessWidget {
     return Stack(
       children: [
         TextField(
+          textCapitalization: capitalize == true
+              ? TextCapitalization.words
+              : TextCapitalization.none,
           inputFormatters: [maskFormatter],
           onTap: actionOnTap,
           controller: controller,

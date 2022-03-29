@@ -1,11 +1,8 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:dudar/pages/Login/Login.dart';
 import 'package:dudar/pages/Registration/Registrarion.dart';
 
-
-class SplashScreen extends StatelessWidget {
+class SplashsScreen extends StatelessWidget {
   static String routeName = "/splash";
   @override
   Widget build(BuildContext context) {
@@ -31,31 +28,27 @@ class SplashScreen extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 30,
-
                     ),
-
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  Text("Самое лучшее приложение в мире",
+                  Text(
+                    "Самое лучшее приложение в мире",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.grey[700],
                       fontSize: 15,
-
-                    ),)
+                    ),
+                  )
                 ],
               ),
               Container(
                 height: MediaQuery.of(context).size.height / 3,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage("assets/images/welcome.png")
-                    )
-                ),
+                        image: AssetImage("assets/images/welcome.png"))),
               ),
-
               Column(
                 children: <Widget>[
                   // the login button
@@ -63,52 +56,45 @@ class SplashScreen extends StatelessWidget {
                     minWidth: double.infinity,
                     height: 60,
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
-
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
                     },
                     // defining the shape
                     shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                            color: Colors.black
-                        ),
-                        borderRadius: BorderRadius.circular(50)
-                    ),
+                        side: BorderSide(color: Colors.black),
+                        borderRadius: BorderRadius.circular(50)),
                     child: Text(
                       "Вход",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18
-                      ),
+                      style:
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
                     ),
                   ),
                   // creating the signup button
-                  SizedBox(height:20),
+                  SizedBox(height: 20),
                   MaterialButton(
                     minWidth: double.infinity,
                     height: 60,
-                    onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUpScreen()));
-
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignUpScreen()));
                     },
                     color: Color(0xff0095FF),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)
-                    ),
+                        borderRadius: BorderRadius.circular(50)),
                     child: Text(
                       "Регистрация",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
-                          fontSize: 18
-                      ),
+                          fontSize: 18),
                     ),
                   )
-
                 ],
               )
-
-
-
             ],
           ),
         ),

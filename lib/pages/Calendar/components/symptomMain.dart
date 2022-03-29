@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
-
 import 'package:chips_choice/chips_choice.dart';
 import 'package:dudar/pages/Calendar/components/modal.dart';
 import 'package:flutter/material.dart';

@@ -5,14 +5,13 @@ import 'constants.dart';
 
 ThemeData theme() {
   return ThemeData(
-    scaffoldBackgroundColor: Color(0xFFE7EFFA),
+    scaffoldBackgroundColor: Color(0xFFFF0FFFF),
     fontFamily: "RobotoMedium",
     appBarTheme: appBarTheme(),
     textTheme: textTheme(),
     //inputDecorationTheme: inputDecorationTheme(),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     primaryIconTheme: iconTheme(),
-
   );
 }
 
@@ -37,7 +36,7 @@ InputDecorationTheme inputDecorationTheme() {
 TextTheme textTheme() {
   return const TextTheme(
     bodyText1: TextStyle(color: Colors.white),
-    bodyText2: TextStyle(color:   Color(0xFF535353)),
+    bodyText2: TextStyle(color: Color(0xFF535353)),
   );
 }
 
@@ -47,10 +46,10 @@ IconThemeData iconTheme() {
 
 AppBarTheme appBarTheme() {
   return const AppBarTheme(
-    //centerTitle: true,
-    backgroundColor: Color(0xFF5166FC),
-    elevation: 3,
-    iconTheme: IconThemeData(color: Color(0xFFFFFFFF)),
-    titleTextStyle: TextStyle(color: Color(0xFFFFFFFF),fontSize: 23,fontFamily: 'RobotoBold')
-  );
+      //centerTitle: true,
+      backgroundColor: Color(0xFF5166FC),
+      elevation: 3,
+      iconTheme: IconThemeData(color: Color(0xFFFFFFFF)),
+      titleTextStyle: TextStyle(
+          color: Color(0xFFFFFFFF), fontSize: 23, fontFamily: 'RobotoBold'));
 }

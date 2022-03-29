@@ -1,1 +1,7 @@
-enum MenuState { home, calendar, doctors, notifications, profile }
+enum MenuState {
+  home,
+  calendar,
+  doctors,
+  diagnosis,
+  profile,
+}

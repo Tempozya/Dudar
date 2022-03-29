@@ -1,6 +1,4 @@
 import 'package:dudar/Other/FadeRoute.dart';
-import 'package:dudar/pages/Home/home.dart';
-import 'package:dudar/pages/Profile/profile.dart';
 import 'package:dudar/pages/SplashScreen/splashScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +11,7 @@ class Onboarding extends StatefulWidget {
 }
 
 class _OnboardingState extends State<Onboarding> {
-  int currentPage =  0;
+  int currentPage = 0;
   PageController _pageController = PageController(initialPage: 0);
 
   @override
@@ -25,10 +23,8 @@ class _OnboardingState extends State<Onboarding> {
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/bg.png")
-            ))
-            ,
+                image:
+                    DecorationImage(image: AssetImage("assets/images/bg.png"))),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -37,19 +33,21 @@ class _OnboardingState extends State<Onboarding> {
                 height: 450,
                 child: PageView(
                   controller: _pageController,
-
                   children: [
-                    onBoardPage('Telemedicine','Запись к доктору','Записывайтесь к доктору '),
-                    onBoardPage('Chat','Связь с доктором','Вам больше не надо ходить в поликлинику\nОбщайтесь с доктором в чате'),
-                    onBoardPage('Farmacy','Запись к врачу','Записывайся и не жди загрузки как на Госуслугах'),
-                    onBoardPage('Analytics','Следите за здоровьем','Записывайся и не жди загрузки как на Госуслугах')
+                    onBoardPage('Telemedicine', 'Запись к доктору',
+                        'Записывайтесь к доктору '),
+                    onBoardPage('Chat', 'Связь с доктором',
+                        'Вам больше не надо ходить в поликлинику\nОбщайтесь с доктором в чате'),
+                    onBoardPage('Farmacy', 'Запись к врачу',
+                        'Записывайся и не жди загрузки как на Госуслугах'),
+                    onBoardPage('Analytics', 'Следите за здоровьем',
+                        'Записывайся и не жди загрузки как на Госуслугах')
                   ],
                   onPageChanged: (value) => {setCurrentPage(value)},
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-
                 children: List.generate(4, (index) => getIndicator(index)),
               )
             ],
@@ -60,26 +58,26 @@ class _OnboardingState extends State<Onboarding> {
     );
   }
 
-  void changePage(){
-
-    if(currentPage == 3){
-      Navigator.pushAndRemoveUntil(context, FadeRoute(page: SplashScreen()),(Route<dynamic> route) => false);
-    }
-    else{
+  void changePage() {
+    if (currentPage == 3) {
+      Navigator.pushAndRemoveUntil(context, FadeRoute(page: SplashsScreen()),
+          (Route<dynamic> route) => false);
+    } else {
       print(currentPage);
-      _pageController.animateToPage(currentPage+1, duration: Duration(milliseconds: 100), curve: Curves.linear);
+      _pageController.animateToPage(currentPage + 1,
+          duration: Duration(milliseconds: 100), curve: Curves.linear);
       print(currentPage);
     }
   }
-  setCurrentPage(int value){
 
+  setCurrentPage(int value) {
     setState(() {
       currentPage = value;
     });
-    }
+  }
 
-   buttonGo(){
-    if(currentPage == 3) {
+  buttonGo() {
+    if (currentPage == 3) {
       return Positioned(
         bottom: 0,
         left: 0,
@@ -95,37 +93,33 @@ class _OnboardingState extends State<Onboarding> {
                 gradient: LinearGradient(
                     colors: [Color(0xFF265ED7), Color(0xFF5A8AF6)],
                     stops: [0, 1],
-                    begin: Alignment.topCenter
-                )
+                    begin: Alignment.topCenter)),
+            child: Icon(
+              Icons.arrow_forward,
+              color: Colors.white,
+              size: 40,
             ),
-            child: Icon(Icons.arrow_forward, color: Colors.white, size: 40,),
           ),
         ),
       );
-    }
-    else{
-        return Container();
+    } else {
+      return Container();
     }
   }
 
-
-
-
-  AnimatedContainer getIndicator(int pageNo){
+  AnimatedContainer getIndicator(int pageNo) {
     return AnimatedContainer(
       duration: Duration(milliseconds: 100),
       height: 10,
       width: (currentPage == pageNo) ? 20 : 10,
       margin: EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
-        color: (currentPage == pageNo) ? Color(0xFF265ED7) : Colors.grey
-      ),
-
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+          color: (currentPage == pageNo) ? Color(0xFF265ED7) : Colors.grey),
     );
   }
 
-  Column onBoardPage(String img, String title, String description){
+  Column onBoardPage(String img, String title, String description) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -134,28 +128,24 @@ class _OnboardingState extends State<Onboarding> {
           width: MediaQuery.of(context).size.width,
           padding: EdgeInsets.all(50),
           decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/images/$img.png')
-              )
+              image:
+                  DecorationImage(image: AssetImage('assets/images/$img.png'))),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 30),
+          child: Text(
+            title,
+            style: const TextStyle(fontSize: 30, fontFamily: 'RobotoBold'),
           ),
         ),
         Container(
-
-          padding: EdgeInsets.symmetric(vertical: 30),
-          child: Text(title,style: const TextStyle(
-              fontSize: 30,
-              fontFamily: 'RobotoBold'
-          ),),
-        ),
-
-
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 10,horizontal: 40),
-            child: Text(description,style: const TextStyle(
-                fontSize: 16,
-                fontFamily: 'RobotoMedium',
-                color: Colors.grey
-            ),textAlign: TextAlign.center,),
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+          child: Text(
+            description,
+            style: const TextStyle(
+                fontSize: 16, fontFamily: 'RobotoMedium', color: Colors.grey),
+            textAlign: TextAlign.center,
+          ),
         )
       ],
     );

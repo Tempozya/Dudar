@@ -1,9 +1,9 @@
 import 'package:dudar/constants.dart';
 import 'package:dudar/enums.dart';
 import 'package:dudar/pages/Calendar/calendar.dart';
+import 'package:dudar/pages/Diagnosis/diag.dart';
 import 'package:dudar/pages/Doctors/doctors.dart';
 import 'package:dudar/pages/Home/home.dart';
-import 'package:dudar/pages/Notification/notification.dart';
 import 'package:dudar/pages/Profile/profile.dart';
 import 'package:dudar/Other/FadeRoute.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +21,7 @@ class CustomBottomNavBar extends StatelessWidget {
     final Color inActiveIconColor = Color(0xFF8FB6FF);
     return Container(
       padding: EdgeInsets.symmetric(vertical: 14),
+      margin: EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -30,10 +31,7 @@ class CustomBottomNavBar extends StatelessWidget {
             color: Color(0xFFDADADA).withOpacity(0.15),
           ),
         ],
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
       child: SafeArea(
           top: false,
@@ -64,7 +62,7 @@ class CustomBottomNavBar extends StatelessWidget {
                     (Route<dynamic> route) => false),
               ),
               IconButton(
-                icon: Icon(Icons.health_and_safety, size: 27),
+                icon: Icon(Icons.people, size: 27),
                 color: MenuState.doctors == selectedMenu
                     ? kPrimaryColor
                     : inActiveIconColor,
@@ -74,13 +72,13 @@ class CustomBottomNavBar extends StatelessWidget {
                     (Route<dynamic> route) => false),
               ),
               IconButton(
-                icon: Icon(Icons.notifications, size: 27),
-                color: MenuState.notifications == selectedMenu
+                icon: Icon(Icons.healing_outlined, size: 27),
+                color: MenuState.diagnosis == selectedMenu
                     ? kPrimaryColor
                     : inActiveIconColor,
                 onPressed: () => Navigator.pushAndRemoveUntil(
                     context,
-                    FadeRoute(page: NotificationScreen()),
+                    FadeRoute(page: DiagnosScreen()),
                     (Route<dynamic> route) => false),
               ),
               IconButton(

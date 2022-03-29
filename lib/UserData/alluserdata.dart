@@ -4,7 +4,7 @@ File? userAvatar;
 
 late String fio;
 
-late String name;
+late String name = "пользователь";
 late String surname;
 late String patronymic;
 
@@ -29,4 +29,4 @@ late double cache;
 
 late String login;
 
-late int userCountNotificate;
+late int userCountNotificate = 7;

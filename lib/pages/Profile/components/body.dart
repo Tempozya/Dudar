@@ -1,6 +1,8 @@
 import 'package:dudar/Other/FadeRoute.dart';
+import 'package:dudar/UserData/alluserdata.dart';
+import 'package:dudar/UserData/getAPIdata.dart';
 import 'package:dudar/pages/Login/Login.dart';
-import 'package:dudar/pages/Profile/components/profile_pic.dart';
+import 'package:dudar/pages/Profile/helps/help.dart';
 import 'package:dudar/pages/Profile/myprofile/myprofile.dart';
 import 'package:dudar/pages/Profile/settings/settings.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +16,12 @@ class Body extends StatefulWidget {
 
 class BodyState extends State<Body> {
   String _logged = "";
+  String _name = "";
   @override
   void initState() {
     super.initState();
     _getLogg();
+    getData();
   }
 
   @override
@@ -28,7 +32,12 @@ class BodyState extends State<Body> {
       child: Column(
         children: [
           SizedBox(height: 20),
-          Text(_logged),
+          Text("Здравствуйте, $name",
+              style: TextStyle(
+                fontSize: 22,
+                fontFamily: 'RobotoBold',
+              )),
+          SizedBox(height: 20),
           ProfileMenu(
             text: "Мой профиль",
             icon: Icons.account_circle_sharp,
@@ -45,7 +54,9 @@ class BodyState extends State<Body> {
           ProfileMenu(
             text: "Помощь",
             icon: Icons.help,
-            press: () {},
+            press: () {
+              Navigator.push(context, FadeRoute(page: HelpScreen()));
+            },
           ),
           ProfileMenu(
             text: "Выход",
@@ -76,15 +87,20 @@ class BodyState extends State<Body> {
 
   Future<void> _getLogg() async {
     final prefs = await SharedPreferences.getInstance();
+    final names = prefs.getString('name');
     final logged = prefs.getString('logged');
-    if (logged != null) {
-      setState((() => _logged = logged));
+
+    if (names != null && logged != null) {
+      setState((() {
+        _name = names;
+        _logged = logged;
+      }));
     }
   }
 
   void logout() async {
     final prefs = await SharedPreferences.getInstance();
-    final success = await prefs.remove('logged');
+    final removing = await prefs.remove('logged');
     Navigator.pushAndRemoveUntil(context, FadeRoute(page: LoginScreen()),
         (Route<dynamic> route) => false);
   }

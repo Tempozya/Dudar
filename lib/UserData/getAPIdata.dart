@@ -20,8 +20,9 @@ Future getData() async {
     List<String> fio = data['FIO'].split(' ');
     surname = fio[0];
     name = fio[1];
+    await prefs.setString('name', name);
     patronymic = fio[2];
-    print(patronymic);
+    //print(name);
   }
   birthday = DateTime.parse(data['birthday']);
   passport = data['passport'];
@@ -69,4 +70,11 @@ Future setData() async {
         textColor: Colors.white,
         fontSize: 16);
   }
+}
+
+Future setSettings() async {
+  var url = Uri.parse(
+      "http://api.c9113991.beget.tech/v1.0/api/Auth/UpdateUserSettings.php");
+  var response = await http.post(url,
+      body: {"login": login, "countNotificate": userCountNotificate});
 }

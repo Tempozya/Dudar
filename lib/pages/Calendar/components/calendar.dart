@@ -10,7 +10,6 @@ class Calendar extends StatefulWidget {
 }
 
 class CalendarState extends State<Calendar> {
-  @override
   CalendarFormat format = CalendarFormat.week;
   DateTime focusedDay = DateTime.now();
 

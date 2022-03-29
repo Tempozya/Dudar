@@ -1,6 +1,6 @@
 import 'package:dudar/Other/FadeRoute.dart';
+import 'package:dudar/UserData/getAPIdata.dart';
 import 'package:dudar/pages/Home/home.dart';
-import 'package:dudar/pages/Profile/profile.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' show json;
@@ -45,8 +45,9 @@ class _LoginPageState extends State<LoginScreen> {
 
       await prefs.setString('logged', user.text);
 
-      Navigator.pushAndRemoveUntil(context, FadeRoute(page: ProfileScreen()),
+      Navigator.pushAndRemoveUntil(context, FadeRoute(page: HomeScreen()),
           (Route<dynamic> route) => false);
+      getData();
     } else {
       Fluttertoast.showToast(
           msg: "Неверные данные",

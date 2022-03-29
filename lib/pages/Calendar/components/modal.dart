@@ -4,7 +4,6 @@ import 'package:dudar/pages/Calendar/components/SingleChoice.dart';
 import 'package:flutter/material.dart';
 import 'package:dudar/pages/Calendar/components/global.dart' as global;
 import 'package:intl/intl.dart'; // for date format
-import 'package:intl/date_symbol_data_local.dart';
 
 class Modal extends StatefulWidget {
   const Modal({Key? key}) : super(key: key);
